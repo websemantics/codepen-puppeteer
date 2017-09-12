@@ -50,13 +50,13 @@ I find the following command useful to force quit running `chromium` processes o
 pkill -f -- "chromium"
 ```
 
-## Preview
+## Preview Downloads
 
 <img alt="Codepen Puppeteer Preview Page" width="850" src="assets/img/preview.gif" />
 
 ## Resources
 
-- [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+- [Puppeteer - Headless Chrome Node API](https://github.com/GoogleChrome/puppeteer)
 - [Getting started with Puppeteer and Chrome Headless for Web Scraping](https://medium.com/@e_mad_ehsan/getting-started-with-puppeteer-and-chrome-headless-for-web-scrapping-6bf5979dee3e)
 
 ## Support
