@@ -18,7 +18,7 @@
 - Skip already downloaded pens
 - Easy to debug using screenshots
 - Custom template pages
-- Easy to follow commented source code with comments
+- Easy to follow source code with comments
 
 ## Usage
 
