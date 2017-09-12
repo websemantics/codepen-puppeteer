@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Codepen Puppeteer : Preview Page</title>
+  <link rel="author" href="https://github.com/websemantics/codepen-puppeteer" type="text/html">
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body, iframe, .splitpane {
+      height: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      font: 14px inconsolata, HelveticaNeue, Helvetica, Arial, sans-serif;
+      line-height: 24px;
+    }
+
+    .menu {
+      width: 300px;
+      padding: 20px;
+      background-color: #eaeaea;
+      overflow-x: scroll;
+    }
+
+    .handle {
+      background-color: #eaeaea;
+    }
+
+    .handle:hover {
+      background-color: #cacaca;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a {
+      display: block;
+      color: #2194CE;
+      text-decoration: none;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: pre;
+      font-variant: petite-caps;
+    }
+  </style>
+</head>
+<body>
+  <div class="splitpane">
+    <div class="menu">
+      {{list}}
+    </div>
+    <div class="handle"></div>
+    <div>
+      <iframe name='iframe' frameborder='0' height='100%' width='100%'></iframe>
+    </div>
+  </div>
+  <script>
+  /**
+   * Super Tiny Splitpane : https://github.com/websemantics/super-tiny-splitpane
+   * Under 2kb and without dependencies 
+   * 
+   * Bare minimum implementation of a Splitpane UI with supports for 
+   * horizontal and vertical layouts
+   * 
+   * @copyright (c) 2016-2017, Web Semantics, Inc.
+   * @author Adnan M.Sagar, PhD. <adnan@websemantics.ca>
+   * @license Distributed under the terms of the MIT License.
+   */
+  !function(t,e){"function"==typeof define&&define.amd?define(e):"object"==typeof module&&module.exports?module.exports=e():t.Splitpane=e()}(this,function(){"use strict";function t(){var t=[].slice.call(document.querySelectorAll(".splitpane")||[]).map(function(t){return new n(t)});t.length>0&&!e.disable&&window.addEventListener("resize",function(e){t.forEach(function(t){t.resize()})},!0)}var e={disable:!1,handle:5,minHeight:100,minWidth:100,templates:[["top:0; bottom:0; left:0; width: {ratio}%; padding-right: {half}px","top:0; bottom:0; left:{ratio}%; margin-left: -{half}px; width: {handle}px; cursor: {cursor}; z-index: 1","top:0; bottom:0; right:0; width: {supplement}%; padding-left: {half}px"],["left:0; right:0; top:0; height: {ratio}%; padding-bottom: {half}px","left:0; right:0; top:{ratio}%; width: 100%; margin-top: -{half}px; height: {handle}px; cursor: {cursor}; z-index: 1","left:0; right:0; bottom:0; height: {supplement}%; padding-top: {half}px"]],cursor:["col-resize","row-resize"]},n=function(t,n){function i(t){c.forEach(function(n,i){n.style="position: absolute; "+o(e.templates[r][i],{half:u/2,handle:u,cursor:l,ratio:100*t,supplement:100*(1-t)})})}function o(t,e,n){return n=n||"",Object.keys(e||{}).forEach(function(i){t="object"==typeof e[i]?o(t,e[i],n+i+"."):t.replace(new RegExp("{ *?"+n+i+" *?}","g"),e[i])}),t}var r=t.classList.contains("vertical")?1:0,a=e[["minWidth","minHeight"][r]],d=t.getBoundingClientRect(),c=t.querySelectorAll(":scope > div"),l=window.getComputedStyle(c[1]).getPropertyValue("cursor"),u=c[1].getBoundingClientRect()[["width","height"][r]];u=1>u||u===d[["width","height"][r]]?e.handle:u,l="auto"===l?e.cursor[r]:l,c[1].addEventListener("mousedown",function(t){var e=d[["width","height"][r]]-a,n=[function(t){var n=t[["pageX","pageY"][r]]-d[["left","top"][r]];t.preventDefault(),i((n>a?e>n?n:e:a)/d[["width","height"][r]])},function(t){n.forEach(function(t){document.removeEventListener(t.name,t),window.dispatchEvent(new Event("resize"))})}];n.forEach(function(t){document.addEventListener(t.name,t)})}),this.resize=function(){d=t.getBoundingClientRect()};var h=["width","height"][r];i((c[0].getBoundingClientRect()[h]<d[h]?c[0].getBoundingClientRect()[h]:d[h]-c[2].getBoundingClientRect()[h])/d[h])};return n.defaults=function(t){Object.keys(t||{}).forEach(function(n){e[n]=t[n]})},"complete"===document.readyState?t():window.addEventListener("load",t),n});
+  </script>
+</body>
+</html>
