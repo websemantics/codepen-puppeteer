@@ -22,6 +22,13 @@
 
 ## Usage
 
+- Clone this project locally,
+
+```bash
+git clone https://github.com/websemantics/codepen-puppeteer
+cd codepen-puppeteer
+```
+
 - Install dependencies (`puppeteer`),
 
 ```bash
