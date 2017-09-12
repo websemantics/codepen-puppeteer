@@ -13,7 +13,7 @@
 ## Features
 
 - Download example pens as single html pages
-- Easy preview with index page
+- Easy preview with an index page
 - Built-in error recovery to resume download
 - Skip already downloaded pens
 - Easy to debug using screenshots
