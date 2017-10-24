@@ -18,6 +18,12 @@
     "node",
     "chrome headless"
   ],
+  "contributors": [
+    {
+      "name": "Mustafa ismail",
+      "github": "https://github.com/mustafaismail22"
+    }
+  ],
   "scripts": {
     "download": "node index.js"
   },

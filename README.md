@@ -19,6 +19,7 @@
 - Easy to debug using screenshots
 - Custom template pages
 - Easy to follow source code with comments
+- Support for loading external resources (i.e. `jquery`, `google fonts`)
 
 ## Usage
 
