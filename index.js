@@ -23,12 +23,15 @@ var debugPath = 'debug/'
  * @private
  */
 async function download(penTemplate, indexTemplate) {
-  var browser = await puppeteer.launch()
+  var browser = await puppeteer.launch({
+    headless: !debug,
+    ignoreHTTPSErrors: true
+  })
   var page = await browser.newPage()
   var searchUrl = 'https://codepen.io/search/pens'
   var params = {limit: 'all', q: searchQuery}
   var startPage = 1
-  var endPage = 100
+  var endPage = 4
   var pens = []
   var links = null
 
@@ -116,18 +119,50 @@ async function download(penTemplate, indexTemplate) {
         return content
       })
 
+      /* (3.f) Get external resources  */
+      var resources = await page.evaluate(() => {
+        var jsSelector = document.querySelectorAll('#js-external-resources input.external-resource.tt-input')
+        var cssSelector = document.querySelectorAll('#css-external-resources input.external-resource.tt-input')
+        var resources = {
+          javascript: [],
+          css: []
+        }
+
+        for (var input of jsSelector) {
+          var val = input.value.trim()
+          if (val) {
+            resources.javascript.push(val)
+          }
+        }
+
+        for (var input of cssSelector) {
+          var val = input.value.trim()
+          if (val) {
+            resources.css.push(val)
+          }
+        }
+        
+        return resources
+      })
+
       if (debug) {
         /* save page after assets are compiled to detect any issues */
         await page.screenshot({path: debugPath + 'after.png', fullPage: true})
       }
 
-      /* (3.f) Construct an html page from the pen template */
+      /* (3.g) Construct an html page from the pen template */
       var html = penTemplate
         .replace('{{html}}', content[0] ? content[0] : '')
         .replace('{{title}}', pen.title.trim())
         .replace('{{url}}', pen.url)
         .replace('{{style}}', content[1] ? content[1] : '')
         .replace('{{javascript}}', content[2] ? content[2] : '')
+        .replace('{{resources.javascript}}', resources.javascript.map(src => {
+          return '<script src="' + src + '"></script>'
+        }).join('\n'))
+        .replace('{{resources.style}}', resources.css.map(href => {
+          return '<link rel="stylesheet" href="' + href + '">'
+        }).join('\n'))
 
       fs.writeFileSync(pensPath + filename, html)
       log('... saved to "' + pensPath + filename + '"')
