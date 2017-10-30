@@ -36,7 +36,7 @@ cd codepen-puppeteer
 npm i
 ```
 
-This package provide two commands to interact with,
+There're two commands to interact with,
 
 1. `search` command to download pens matching search query
 
