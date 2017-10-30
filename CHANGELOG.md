@@ -1,4 +1,13 @@
-# v1.0.1 - 01.09.2017
+# v1.1.0 - 30.10.2017
+
+### Added
+
+* Command-line interface
+* Download a list of pens from list of urls
+* Option to specify result start and end pages
+* Option to specify path for downloaded pens and debug screenshots
+
+# v1.0.1 - 23.10.2017
 
 ### Added
 

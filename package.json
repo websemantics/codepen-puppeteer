@@ -1,16 +1,7 @@
 {
   "name": "codepen-puppeteer",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Use Puppeteer to download pens from Codepen.io as single html pages.",
-  "main": "index.js",
-  "homepage": "https://github.com/websemantics/codepen-puppeteer#readme",
-  "repository" : {
-    "type" : "git",
-    "url" : "websemantics/codepen-puppeteer.git"
-  },
-  "bugs": {
-    "url": "https://github.com/websemantics/codepen-puppeteer/issues"
-  },
   "keywords": [
     "codepen",
     "puppeteer",
@@ -18,19 +9,33 @@
     "node",
     "chrome headless"
   ],
+  "homepage": "https://github.com/websemantics/codepen-puppeteer#readme",
+  "author": "Adnan M.Sagar, PhD.",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "penpet": "./bin/penpet"
+  },
+  "scripts": {
+    "pen": "penpet",
+    "download": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "websemantics/codepen-puppeteer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/websemantics/codepen-puppeteer/issues"
+  },
   "contributors": [
     {
       "name": "Mustafa ismail",
       "github": "https://github.com/mustafaismail22"
     }
   ],
-  "scripts": {
-    "download": "node index.js"
-  },
-  "author": "Adnan M.Sagar, PhD.",
-  "license": "MIT",
   "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.11.0",
     "puppeteer": "^0.10.2"
   }
 }
-

@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+const program = require('commander')
+const chalk = require('chalk')
+const download = require('../')
+const path = require('path')
+
+program
+  .usage('<search-query>')
+  .option('-s, --start [page]', 'result start page number (defaults to 1)')
+  .option('-e, --end [page]', 'result end page number (defaults to 4)')
+  .option('-p, --path [folder-path]', 'path to store downloaded pens (optional)')
+  
+program.on('--help', function () {
+  console.log('')
+  console.log('  Examples:')
+  console.log()
+  console.log(chalk.gray('    # download found pens from results page #5 to page #8'))
+  console.log('    $ penpet search flexbox -s 5 -e 8')
+  console.log()
+  console.log(chalk.gray('    # download found pens to specified folder'))
+  console.log('    $ penpet search flexbox -p flexbox-pens')
+  console.log()
+})
+
+/* Show help if user has not provided arguments */
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+help()
+
+/* Get user arguments */
+const searchQuery = program.args[0]
+const startPage = Number(program.start) || 1
+const endPage = Number(program.end) || 4
+const pensPath = typeof program.path === 'string' ? path.join(program.path, '/') : 'pens/'
+
+/* Run main download script */
+download({searchQuery, startPage, endPage, pensPath})

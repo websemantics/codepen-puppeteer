@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+require('commander')
+.version(require('../package').version)
+.usage('<command> [options]')
+.command('search', 'search codepen and download pens found')
+.command('file', 'download pens from urls in json file')
+.parse(process.argv)

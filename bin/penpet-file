@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+const program = require('commander')
+const chalk = require('chalk')
+const download = require('../')
+const path = require('path')
+const fs = require('fs')
+
+program
+  .usage('<json-file>')
+  .option('-d, --debug [folder-path]', 'enable debug mode (path is optional')
+  .option('-p, --path [folder-path]', 'path to store downloaded pens (optional)')
+  
+program.on('--help', function () {
+  console.log('')
+  console.log('  Example:')
+  console.log()
+  console.log(chalk.gray('    # download list of pens from urls'))
+  console.log('    $ penpet file pens.json')
+  console.log()
+  console.log(chalk.gray('    # download list of pens in debug mode'))
+  console.log('    $ penpet file pens.json -d screenshots')
+  console.log()
+})
+
+/* Show help if user has not provided arguments */
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+help()
+
+
+/* Get user arguments */
+const file = program.args[0]
+const debug = program.debug || false
+const debugPath = typeof debug === 'string' ? path.join(debug, '/') : 'debug/'
+const pensPath = typeof program.path === 'string' ? path.join(program.path, '/') : 'pens/'
+
+/* Exit if file does not exist */
+if (!fs.existsSync(file)) {
+  console.log(chalk.red(`File ${file} not found!`))
+  return
+}
+
+const json = JSON.parse(fs.readFileSync(file))
+
+/* data can be provided as array of urls (strings) or objects, { url: "http://...", title: 'pen title'} */
+const links = json.map((pen) => pen.url ? pen : {url: pen, title: pen.substring(pen.indexOf('pen/') + 4)})
+
+/* Run main download script */
+download({links, pensPath, debug, debugPath})

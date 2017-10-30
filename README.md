@@ -36,19 +36,35 @@ cd codepen-puppeteer
 npm i
 ```
 
-- Change search query @ `./index.js` line `#14`
+This package provide two commands to interact with,
 
-- Start download
+1. `search` command to download pens matching search query
 
 ```bash
-npm run download
+penpet search flexbox
 ```
+
+You can specify start and end page with `-s` and `-e` options
 
 - Browse to `./pens/index.html` to preview full list of downloads
 
+2. `file` command to download provided list of pens
+
+```bash
+penpet file pens.json
+```
+
+File `pens.json` is provided as an example
+
+2. For examples and more help, use option `-h` with both commands
+
 ## Debug
 
-This project is a proof of concept so you might find problematic pens that wouldn't download fully. Turn the debug flag on (`debug = true`) @ `./index.js` line `#13` to enable screenshots which might help you debug the issue.
+This project is a proof of concept so you might find problematic pens that wouldn't download fully. Turn the debug flag `-d` with the `file` command to enable screenshots which might help you debug the issue,
+
+```bash
+penpet file pens.json -d
+```
 
 ## Hint
 
