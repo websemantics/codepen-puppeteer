@@ -1,17 +1,6 @@
 {
   "name": "codepen-puppeteer",
-  "version": "1.1.0",
-  "description": "Use Puppeteer to download pens from Codepen.io as single html pages.",
-  "keywords": [
-    "codepen",
-    "puppeteer",
-    "scraping",
-    "node",
-    "chrome headless"
-  ],
-  "homepage": "https://github.com/websemantics/codepen-puppeteer#readme",
-  "author": "Adnan M.Sagar, PhD.",
-  "license": "MIT",
+  "version": "1.2.0",
   "main": "index.js",
   "bin": {
     "penpet": "./bin/penpet"
@@ -20,6 +9,17 @@
     "pen": "penpet",
     "download": "node index.js"
   },
+  "description": "Use Puppeteer to download pens from Codepen.io as single html pages.",
+  "homepage": "https://github.com/websemantics/codepen-puppeteer#readme",
+  "author": "Adnan M.Sagar, PhD.",
+  "license": "MIT",
+  "keywords": [
+    "codepen",
+    "puppeteer",
+    "scraping",
+    "node",
+    "chrome headless"
+  ],
   "repository": {
     "type": "git",
     "url": "websemantics/codepen-puppeteer.git"
