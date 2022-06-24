@@ -1,3 +1,7 @@
+# v1.2.0 - 23.05.2022
+
+* Upgrade puppeteer from `0.10.2"` to `15.0.0`
+
 # v1.1.0 - 30.10.2017
 
 ### Added
@@ -11,7 +15,7 @@
 
 ### Added
 
-* Support for loading external resources like `jquery`, `google fonts` (credits to @mustafaismail22) 
+* Support for loading external resources like `jquery`, `google fonts` (credits to @mustafaismail22)
 
 # v1.0.0 - 01.09.2017
 
